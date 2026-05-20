@@ -1,0 +1,27 @@
+#cloud-config
+
+apt_update: true
+apt_upgrade: true
+
+# Engineering Tools: We need Docker for the Prod Server 
+# and Git for the CI/CD pipeline
+packages:
+ - python3-pip
+ - python3-dev
+ - build-essential
+ - docker.io
+ - git
+
+runcmd:
+ # 1. Install the "Brain" tools (Scikit-learn and Ray for tuning)
+ # We use numpy<2.0 to avoid the version conflicts we saw in Assignment 4
+ - pip3 install "pandas" "scikit-learn" "ray[tune]==2.4.0" "PyGithub" "flask" "numpy<2.0"
+
+ # 2. Set up Docker permissions
+ # This allows the GitHook to build containers automatically
+ - usermod -aG docker ubuntu
+ - systemctl enable --now docker
+
+ # 3. Create the project workspace on the new servers
+ - mkdir -p /home/ubuntu/stargazer_project
+ - chown -R ubuntu:ubuntu /home/ubuntu/stargazer_project
