@@ -1,3 +1,4 @@
+
 # 🚀 GitHub Stargazer Predictor: Distributed ML & CI/CD Pipeline
 
 This project implements an end-to-end Data Engineering pipeline to predict GitHub repository popularity. It covers the full lifecycle: from automated infrastructure provisioning to distributed training and containerized production serving.
