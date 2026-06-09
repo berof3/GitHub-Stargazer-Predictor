@@ -28,16 +28,18 @@ This project implements an end-to-end Data Engineering pipeline to predict GitHu
     └── tuning_results_*.csv # Scalability performance metrics
 ```
 ### System Architecture
-
+```text
 The system follows a Lab-to-Shop paradigm:
 The Lab (Development): Data is harvested and the model is tuned across a 3-node Ray Cluster.
 The Bridge (CI/CD): GitHooks automate the movement of model artifacts from the Lab to the Shop.
 The Shop (Production): The model is served as a Machine Learning as a Service (MLaaS) via Docker.
+```
 
 ####  Reproducibility Guide
-
+```text
 Provisioning: Run infrastructure/launch_VMs.py on your Manager node.
 Harvesting: Execute data_pipeline/scraper.py to build the training set.
 Training: Run training/train_model.py to perform distributed hyperparameter search.
 Deployment: Commit changes and run git push production main to trigger the automated rebuild.
 Testing: Run production/rank_repos.py to query the live API.
+```
