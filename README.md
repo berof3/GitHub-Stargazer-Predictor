@@ -1,5 +1,5 @@
 
-# 🚀 GitHub Stargazer Predictor: Distributed ML & CI/CD Pipeline
+# GitHub Stargazer Predictor: Distributed ML & CI/CD Pipeline
 
 This project implements an end-to-end Data Engineering pipeline to predict GitHub repository popularity. It covers the full lifecycle: from automated infrastructure provisioning to distributed training and containerized production serving.
 
@@ -27,12 +27,12 @@ This project implements an end-to-end Data Engineering pipeline to predict GitHu
     ├── plot_scalability.py # Analysis visualization script
     └── tuning_results_*.csv # Scalability performance metrics
 
-### System Architecture
+## System Architecture
 The system follows a Lab-to-Shop paradigm:
 The Lab (Development): Data is harvested and the model is tuned across a 3-node Ray Cluster.
 The Bridge (CI/CD): GitHooks automate the movement of model artifacts from the Lab to the Shop.
 The Shop (Production): The model is served as a Machine Learning as a Service (MLaaS) via Docker.
-#### roducibility Guide
+##  roducibility Guide
 Provisioning: Run infrastructure/launch_VMs.py on your Manager node.
 Harvesting: Execute data_pipeline/scraper.py to build the training set.
 Training: Run training/train_model.py to perform distributed hyperparameter search.
